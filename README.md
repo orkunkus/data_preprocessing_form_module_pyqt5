@@ -174,7 +174,7 @@ _For detail information, please see the [StandardScaler](https://scikit-learn.or
 **Graphic View** enables users to export the results (selected columns) with scatter plots. Hence, users can be able to get which values dropped or scaled.
 
 <p align="center">
-  <img src="images/vizualize.png" />
+  <img src="images/visualize.png" />
 </p> 
 
 
@@ -194,9 +194,7 @@ Contributions are what make the open source community such an amazing place to b
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
-
-
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 <!-- CONTACT -->
 ## Contact
