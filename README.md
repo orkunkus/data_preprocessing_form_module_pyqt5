@@ -63,7 +63,6 @@
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
 
@@ -93,24 +92,24 @@ All of the files including images and design are necessary to be executed the mo
 This is an example of how to list things you need to use the software and how to install them.
 * PyQt5
   ```python
-  pip install PyQt5
-  conda install -c anaconda pyqt
+    pip install PyQt5
+    conda install -c anaconda pyqt
   ```
 * Qt Designer (Optional)
   ```python
-  pip install pyqt5-tools
+    pip install pyqt5-tools
   ```
  
 <!-- USAGE EXAMPLES -->
 ## Usage
-5 steps to be completed the progress.
+5 steps to be needed to complete the progress.
 
 <!-- USAGE EXAMPLES -->
 ## Select File
 <p align="center">
   <img src="images/preprocess.png" />
 </p> 
-Users can easily select .csv formatted files by browse in this screen. 
+Users can easily select .csv formatted files by browse button in this screen. 
 
 ## Define Formats
 <p align="center">
@@ -122,14 +121,61 @@ Missing formats predefined, however depending on user choise, this formats might
 Seperator is the delimiter parameter of read_csv function. Mostly used delimiter formats added to this section.
 
 ## List the Features
+<p align="center">
+  <img src="images/list.png" />
+</p> 
+With the "Load Data" button, selected file would be listed here. 
+
+Green labels indicate the headers, which are compulsory, red labels show the missing datas in data depending on user's choise on previous section.
+
+Before the next step, users must select the columns by clicking any item in list. Column will automatically selected and showed below then.
+
 ## Pre Processing
+<p align="center">
+  <img src="images/preprocess.png" />
+</p> 
+Three preprocessing functions valid here.
+
+**Missing Value Imputation** detects the missing values in the list and impute them by SimpleImputer. 
+
+Numerical values are imputed by mean whereas categorical ones are imputed by most_frequent method.
+
+_For detail information, please see the [SimpleImputer](https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html)_.
+
+```python
+      num_imp = SimpleImputer(missing_values=np.nan, strategy='mean')
+      cat_imp = SimpleImputer(missing_values=np.nan, strategy='most_frequent')
+```
+
+**Outlier Detection** finds the values not belonging the bounds by IQR method and drop them.
+
+_For detail information, please see the [Interquartile_range](https://en.wikipedia.org/wiki/Interquartile_range)_.
+
+```python
+      q25, q75 = np.quantile(out_data, 0.25), np.quantile(out_data, 0.75)
+      iqr = q75 - q25
+      cut_off = iqr * 1.5
+      lower, upper = q25 - cut_off, q75 + cut_off
+```
+
+**Data Scaling** standardize the values to unit variance. 
+
+_For detail information, please see the [StandardScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)_.
+
+```python
+      scaler = preprocessing.StandardScaler()
+      self.scale_frame[col_name] = scaler.fit_transform(np.reshape(self.dataframe[col_name].values, (-1, 1)))
+```
+
 ## Visualize
+2 ways to export the results might be handled. 
+**File Export** creates the new file with imputation values as previous selected file.
 
-<!-- ROADMAP -->
-## Roadmap
+**Graphic View** enables users to export the results (selected columns) with scatter plots. Hence, users can be able to get which values dropped or scaled.
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features (and known issues).
-
+<p align="center">
+  <img src="images/vizualize.png" />
+</p> 
 
 
 <!-- CONTRIBUTING -->
@@ -155,28 +201,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Project Link: [https://github.com/orkunkus/data_preprocessing_form_module_pyqt5](https://github.com/orkunkus/data_preprocessing_form_module_pyqt5)
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Img Shields](https://shields.io)
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Pages](https://pages.github.com)
-* [Animate.css](https://daneden.github.io/animate.css)
-* [Loaders.css](https://connoratherton.com/loaders)
-* [Slick Carousel](https://kenwheeler.github.io/slick)
-* [Smooth Scroll](https://github.com/cferdinandi/smooth-scroll)
-* [Sticky Kit](http://leafo.net/sticky-kit)
-* [JVectorMap](http://jvectormap.com)
-* [Font Awesome](https://fontawesome.com)
-
-
-
+Mail: orkunkus@yahoo.com
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
