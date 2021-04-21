@@ -107,7 +107,7 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Select File
 <p align="center">
-  <img src="images/preprocess.png" />
+  <img src="images/select.png" />
 </p> 
 Users can easily select .csv formatted files by browse button in this screen. 
 
